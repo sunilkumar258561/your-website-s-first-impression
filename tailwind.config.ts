@@ -57,6 +57,26 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        hero: {
+          start: "hsl(var(--hero-gradient-start))",
+          end: "hsl(var(--hero-gradient-end))",
+        },
+        badge: {
+          green: "hsl(var(--badge-green))",
+          "green-foreground": "hsl(var(--badge-green-foreground))",
+        },
+        star: "hsl(var(--star-yellow))",
+        discount: {
+          DEFAULT: "hsl(var(--discount-red))",
+          foreground: "hsl(var(--discount-red-foreground))",
+        },
+      },
+      fontFamily: {
+        display: ["Poppins", "system-ui", "sans-serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
+      },
+      backgroundImage: {
+        "hero-gradient": "linear-gradient(135deg, hsl(var(--hero-gradient-start)) 0%, hsl(var(--hero-gradient-end)) 100%)",
       },
       borderRadius: {
         lg: "var(--radius)",
