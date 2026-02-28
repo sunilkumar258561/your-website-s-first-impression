@@ -69,21 +69,25 @@ export default {
   			discount: {
   				DEFAULT: 'hsl(var(--discount-red))',
   				foreground: 'hsl(var(--discount-red-foreground))'
-  			}
+  			},
+  			gold: 'hsl(var(--gold-glow))',
+  			'deep-orange': 'hsl(var(--deep-orange))'
   		},
   		fontFamily: {
   			display: [
-  				'Poppins',
-  				'system-ui',
-  				'sans-serif'
+  				'Playfair Display',
+  				'ui-serif',
+  				'Georgia',
+  				'serif'
   			],
   			body: [
-  				'Inter',
+  				'DM Sans',
+  				'ui-sans-serif',
   				'system-ui',
   				'sans-serif'
   			],
   			sans: [
-  				'Roboto',
+  				'DM Sans',
   				'ui-sans-serif',
   				'system-ui',
   				'-apple-system',
@@ -91,16 +95,14 @@ export default {
   				'Segoe UI',
   				'Helvetica Neue',
   				'Arial',
-  				'Noto Sans',
   				'sans-serif'
   			],
   			serif: [
-  				'Libre Caslon Text',
+  				'Playfair Display',
   				'ui-serif',
   				'Georgia',
   				'Cambria',
   				'Times New Roman',
-  				'Times',
   				'serif'
   			],
   			mono: [
@@ -110,8 +112,6 @@ export default {
   				'Menlo',
   				'Monaco',
   				'Consolas',
-  				'Liberation Mono',
-  				'Courier New',
   				'monospace'
   			]
   		},

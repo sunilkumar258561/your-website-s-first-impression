@@ -9,23 +9,23 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md border-b border-border">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between gap-4">
         {/* Logo */}
         <motion.div
           className="flex-shrink-0"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
         >
-          <h1 className="text-xl sm:text-2xl font-display font-bold text-primary cursor-pointer">
-            foodzzy
+          <h1 className="text-2xl sm:text-3xl font-display font-bold text-foreground cursor-pointer">
+            foo<span className="text-primary">dzzy</span>
           </h1>
         </motion.div>
 
         {/* Location Selector */}
         <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="hidden md:flex items-center gap-2 px-3 py-2 rounded-lg border border-border bg-background hover:bg-secondary/50 cursor-pointer transition-colors"
+          whileHover={{ scale: 1.01 }}
+          className="hidden md:flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-background hover:border-primary/30 cursor-pointer transition-colors duration-300"
         >
           <MapPin className="w-4 h-4 text-primary" />
           <span className="text-sm font-medium text-foreground">Mumbai, India</span>
@@ -35,62 +35,55 @@ const Header = () => {
         {/* Desktop Search Bar */}
         <div className="flex-1 max-w-md hidden lg:block">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               type="text"
               placeholder="Search for restaurants, dishes..."
-              className="pl-10 pr-4 py-2 w-full bg-secondary/50 border-0 focus-visible:ring-primary"
+              className="pl-11 pr-4 py-2.5 w-full bg-secondary/50 border border-border rounded-xl focus-visible:ring-primary focus-visible:border-primary/30 transition-all duration-300"
             />
           </div>
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-1 sm:gap-2 md:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Mobile Search Toggle */}
-          <motion.div whileTap={{ scale: 0.9 }}>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden"
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-            >
-              <Search className="w-5 h-5" />
-            </Button>
-          </motion.div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="lg:hidden rounded-xl"
+            onClick={() => setIsSearchOpen(!isSearchOpen)}
+          >
+            <Search className="w-5 h-5" />
+          </Button>
 
           {/* Cart */}
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button variant="ghost" className="gap-1 sm:gap-2 relative">
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Button variant="ghost" className="gap-2 relative rounded-xl">
               <ShoppingCart className="w-5 h-5" />
               <span className="hidden sm:inline">Cart</span>
-              <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
-              >
+              <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                 2
-              </motion.span>
+              </span>
             </Button>
           </motion.div>
 
           {/* Login */}
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button variant="outline" className="gap-1 sm:gap-2">
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+            <Button className="gap-2 rounded-xl bg-primary hover:bg-deep-orange transition-colors duration-300">
               <User className="w-4 h-4" />
               <span className="hidden sm:inline">Login</span>
             </Button>
           </motion.div>
 
           {/* Mobile Menu Toggle */}
-          <motion.div whileTap={{ scale: 0.9 }} className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </Button>
-          </motion.div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden rounded-xl"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </Button>
         </div>
       </div>
 
@@ -105,11 +98,11 @@ const Header = () => {
           >
             <div className="container mx-auto px-4 py-3">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <Input
                   type="text"
                   placeholder="Search for restaurants, dishes..."
-                  className="pl-10 pr-4 py-2 w-full bg-secondary/50 border-0 focus-visible:ring-primary"
+                  className="pl-11 pr-4 py-2.5 w-full bg-secondary/50 border border-border rounded-xl focus-visible:ring-primary"
                   autoFocus
                 />
               </div>
@@ -127,27 +120,25 @@ const Header = () => {
             exit={{ height: 0, opacity: 0 }}
             className="md:hidden border-t border-border overflow-hidden bg-card"
           >
-            <div className="container mx-auto px-4 py-4 space-y-4">
-              {/* Location */}
+            <div className="container mx-auto px-4 py-5 space-y-4">
               <motion.div
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                className="flex items-center gap-2 px-3 py-3 rounded-lg border border-border bg-background cursor-pointer"
+                className="flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-background cursor-pointer"
               >
                 <MapPin className="w-5 h-5 text-primary" />
                 <span className="font-medium text-foreground">Mumbai, India</span>
                 <ChevronDown className="w-4 h-4 text-muted-foreground ml-auto" />
               </motion.div>
 
-              {/* Menu Items */}
               {["Home", "Offers", "Help", "Sign In"].map((item, index) => (
                 <motion.div
                   key={item}
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.1 * (index + 2) }}
-                  className="px-3 py-2 text-foreground font-medium hover:text-primary cursor-pointer transition-colors"
+                  className="px-4 py-3 text-foreground font-medium hover:text-primary cursor-pointer transition-colors duration-300 rounded-xl hover:bg-secondary/50"
                 >
                   {item}
                 </motion.div>
