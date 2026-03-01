@@ -1,134 +1,129 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 96%;
-    --foreground: 0 0% 9%;
+    /* Burnt Orange Premium Palette */
+    --background: 30 100% 97%;       /* #FFF8F1 Soft Cream */
+    --foreground: 222 47% 11%;       /* #111827 Charcoal */
 
-    --card: 0 0% 98%;
-    --card-foreground: 0 0% 9%;
+    --card: 0 0% 100%;               /* Pure white cards */
+    --card-foreground: 222 47% 11%;
 
-    --popover: 0 0% 89%;
-    --popover-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 20 90% 48%;
-    --primary-foreground: 33 100% 96%;
+    --primary: 25 95% 53%;           /* #F97316 Burnt Orange */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 32%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 30 60% 96%;         /* Warm cream secondary */
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 0 0% 63%;
-    --muted-foreground: 0 0% 9%;
+    --muted: 30 20% 90%;
+    --muted-foreground: 222 10% 45%;
 
-    --accent: 47 100% 96%;
-    --accent-foreground: 37 92% 50%;
+    --accent: 30 96% 72%;            /* #FDBA74 Warm Gold */
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 72% 50%;
-    --destructive-foreground: 0 85% 97%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 83%;
-    --input: 0 0% 83%;
-    --ring: 20 90% 48%;
+    --border: 30 20% 90%;
+    --input: 30 20% 88%;
+    --ring: 25 95% 53%;
 
     --radius: 0.75rem;
 
-    /* Custom food delivery tokens */
-    --hero-gradient-start: 43 96% 56%;
-    --hero-gradient-end: 36 100% 50%;
+    /* Custom tokens */
+    --hero-gradient-start: 30 100% 97%;
+    --hero-gradient-end: 30 80% 94%;
     --badge-green: 142 76% 36%;
     --badge-green-foreground: 0 0% 100%;
-    --star-yellow: 45 93% 47%;
-    --discount-red: 0 84% 50%;
+    --star-yellow: 25 95% 53%;       /* Use burnt orange for ratings */
+    --discount-red: 25 95% 53%;      /* Burnt orange for offers */
     --discount-red-foreground: 0 0% 100%;
+    --primary-deep: 25 90% 47%;      /* #EA580C Deep Orange hover */
+    --gold: 30 96% 72%;              /* #FDBA74 Warm Gold */
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 9%;
-    --sidebar-primary: 20 90% 48%;
-    --sidebar-primary-foreground: 33 100% 96%;
-    --sidebar-accent: 0 0% 32%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 83%;
-    --sidebar-ring: 20 90% 48%;
-    --chart-1: 27 95% 60%;
-    --chart-2: 43 96% 56%;
-    --chart-3: 47 95% 53%;
-    --chart-4: 24 94% 53%;
-    --chart-5: 0 0% 45%;
-    --sidebar: 0 0% 98%;
-    --font-sans: 'Roboto', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-    --font-serif: 'Libre Caslon Text', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-    --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-    --tracking-normal: 0em;
-    --spacing: 0.25rem;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 25 95% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 96% 72%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 30 20% 90%;
+    --sidebar-ring: 25 95% 53%;
+    --chart-1: 25 95% 53%;
+    --chart-2: 30 96% 72%;
+    --chart-3: 25 90% 47%;
+    --chart-4: 30 60% 96%;
+    --chart-5: 222 10% 45%;
+    --sidebar: 0 0% 100%;
+
+    --shadow-2xs: 0 1px 2px 0px hsl(30 20% 20% / 0.03);
+    --shadow-xs: 0 1px 3px 0px hsl(30 20% 20% / 0.04);
+    --shadow-sm: 0 2px 8px -2px hsl(30 20% 20% / 0.06);
+    --shadow: 0 4px 12px -2px hsl(30 20% 20% / 0.08);
+    --shadow-md: 0 6px 20px -4px hsl(30 20% 20% / 0.08);
+    --shadow-lg: 0 12px 32px -8px hsl(30 20% 20% / 0.1);
+    --shadow-xl: 0 20px 48px -12px hsl(30 20% 20% / 0.12);
+    --shadow-2xl: 0 32px 64px -16px hsl(30 20% 20% / 0.16);
   }
 
   .dark {
-    --background: 0 0% 9%;
-    --foreground: 0 0% 98%;
+    --background: 222 47% 6%;
+    --foreground: 30 100% 97%;
 
-    --card: 0 0% 14%;
-    --card-foreground: 0 0% 98%;
+    --card: 222 30% 12%;
+    --card-foreground: 30 100% 97%;
 
-    --popover: 0 0% 25%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 222 30% 14%;
+    --popover-foreground: 30 100% 97%;
 
-    --primary: 27 95% 60%;
-    --primary-foreground: 12 81% 14%;
+    --primary: 25 95% 53%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 45%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 222 20% 18%;
+    --secondary-foreground: 30 100% 97%;
 
-    --muted: 0 0% 45%;
-    --muted-foreground: 0 0% 98%;
+    --muted: 222 15% 25%;
+    --muted-foreground: 30 20% 65%;
 
-    --accent: 20 91% 14%;
-    --accent-foreground: 43 96% 56%;
+    --accent: 30 96% 72%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 85% 97%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 32%;
-    --input: 0 0% 32%;
-    --ring: 27 95% 60%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 27 95% 60%;
-    --sidebar-primary-foreground: 12 81% 14%;
-    --sidebar-accent: 43 96% 56%;
-    --sidebar-accent-foreground: 20 91% 14%;
-    --sidebar-border: 0 0% 32%;
-    --sidebar-ring: 27 95% 60%;
-    --chart-1: 30 97% 72%;
-    --chart-2: 45 96% 64%;
-    --chart-3: 48 96% 76%;
-    --chart-4: 27 95% 60%;
-    --chart-5: 0 0% 45%;
-    --sidebar: 0 0% 14%;
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    --border: 222 15% 20%;
+    --input: 222 15% 22%;
+    --ring: 25 95% 53%;
+
+    --sidebar-background: 222 30% 10%;
+    --sidebar-foreground: 30 100% 97%;
+    --sidebar-primary: 25 95% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 30 96% 72%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 222 15% 20%;
+    --sidebar-ring: 25 95% 53%;
+    --chart-1: 25 95% 60%;
+    --chart-2: 30 96% 72%;
+    --chart-3: 25 90% 47%;
+    --chart-4: 222 20% 18%;
+    --chart-5: 30 20% 55%;
+    --sidebar: 222 30% 12%;
+
+    --shadow-2xs: 0 1px 2px 0px hsl(0 0% 0% / 0.1);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.12);
+    --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.15);
+    --shadow: 0 4px 12px -2px hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 6px 20px -4px hsl(0 0% 0% / 0.2);
+    --shadow-lg: 0 12px 32px -8px hsl(0 0% 0% / 0.25);
+    --shadow-xl: 0 20px 48px -12px hsl(0 0% 0% / 0.3);
+    --shadow-2xl: 0 32px 64px -16px hsl(0 0% 0% / 0.4);
   }
 }
 
@@ -138,7 +133,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background text-foreground font-body antialiased;
   }
 }
 
