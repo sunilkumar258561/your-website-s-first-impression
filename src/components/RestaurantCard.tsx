@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { Star, Clock, IndianRupee, Heart, ExternalLink } from "lucide-react";
+import { Star, Clock, IndianRupee, Heart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 interface RestaurantCardProps {
   name: string;
   image: string;
-  logo?: string;
   rating: number;
   deliveryTime: string;
   priceForTwo: number;
@@ -26,7 +24,6 @@ const RestaurantCard = ({
   index = 0,
 }: RestaurantCardProps) => {
   const [isLiked, setIsLiked] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
@@ -34,112 +31,71 @@ const RestaurantCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.1, duration: 0.4 }}
-      whileHover={{ y: -8 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      className="group bg-card rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-border cursor-pointer"
+      whileHover={{ y: -6 }}
+      className="group bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-border/50 cursor-pointer"
     >
-      {/* Image Container */}
+      {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden">
-        <motion.img
+        <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover"
-          animate={{ scale: isHovered ? 1.1 : 1 }}
-          transition={{ duration: 0.4 }}
-        />
-        
-        {/* Overlay */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
-        {/* Discount Badge */}
+        {/* Gradient overlay on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        {/* Discount */}
         {discount && (
-          <motion.div
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <Badge className="absolute bottom-3 left-3 bg-discount text-discount-foreground font-bold px-3 py-1">
-              {discount}
-            </Badge>
-          </motion.div>
+          <Badge className="absolute bottom-3 left-3 bg-primary text-primary-foreground font-bold px-3 py-1 rounded-lg text-xs shadow-md">
+            {discount}
+          </Badge>
         )}
 
-        {/* Like Button */}
+        {/* Like */}
         <motion.button
-          whileHover={{ scale: 1.2 }}
+          whileHover={{ scale: 1.15 }}
           whileTap={{ scale: 0.9 }}
           onClick={(e) => {
             e.stopPropagation();
             setIsLiked(!isLiked);
           }}
-          className="absolute top-3 right-3 p-2 rounded-full bg-card/80 backdrop-blur-sm shadow-md"
+          className="absolute top-3 right-3 p-2 rounded-full bg-card/90 backdrop-blur-sm shadow-sm"
         >
           <Heart
-            className={`w-5 h-5 transition-colors ${
-              isLiked ? "fill-accent text-accent" : "text-muted-foreground"
+            className={`w-4 h-4 transition-colors ${
+              isLiked ? "fill-primary text-primary" : "text-muted-foreground"
             }`}
           />
         </motion.button>
-
-        {/* Quick Order Button - Shows on Hover */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
-          className="absolute bottom-3 right-3"
-        >
-          <Button size="sm" className="gap-1 shadow-lg">
-            <ExternalLink className="w-3 h-3" />
-            Order
-          </Button>
-        </motion.div>
       </div>
 
       {/* Content */}
-      <div className="p-4">
-        <motion.h4
-          className="font-display font-semibold text-lg text-foreground mb-2 truncate"
-          animate={{ x: isHovered ? 4 : 0 }}
-        >
+      <div className="p-5">
+        <h4 className="font-display font-semibold text-lg text-foreground mb-3 truncate">
           {name}
-        </motion.h4>
+        </h4>
 
-        {/* Rating & Info */}
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            className="flex items-center gap-1 bg-badge-green/10 text-badge-green px-2 py-0.5 rounded-full"
-          >
-            <Star className="w-3.5 h-3.5 fill-badge-green" />
-            <span className="font-semibold">{rating}</span>
-          </motion.div>
-          <span className="text-border">•</span>
-          <div className="flex items-center gap-1">
-            <Clock className="w-3 h-3" />
-            <span>{deliveryTime}</span>
+        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+          <div className="flex items-center gap-1 bg-primary/10 text-primary px-2.5 py-1 rounded-lg">
+            <Star className="w-3.5 h-3.5 fill-primary" />
+            <span className="font-bold text-xs">{rating}</span>
           </div>
-          <span className="text-border">•</span>
+          <div className="flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5" />
+            <span className="text-xs">{deliveryTime}</span>
+          </div>
           <div className="flex items-center gap-0.5">
-            <IndianRupee className="w-3 h-3" />
-            <span>{priceForTwo}</span>
+            <IndianRupee className="w-3.5 h-3.5" />
+            <span className="text-xs">{priceForTwo} for two</span>
           </div>
         </div>
 
-        {/* Tags */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <Badge
-            variant="outline"
-            className="bg-discount/10 text-discount border-discount/30 font-bold text-xs"
-          >
-            50% OFF
-          </Badge>
-          <Badge variant="secondary" className="text-xs">
-            Free Delivery
-          </Badge>
+        {/* Offer tag */}
+        <div className="mt-3 pt-3 border-t border-border/50">
+          <span className="text-xs font-semibold text-accent-foreground bg-accent/30 px-3 py-1 rounded-full">
+            🎉 Free Delivery
+          </span>
         </div>
       </div>
     </motion.div>

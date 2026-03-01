@@ -15,80 +15,73 @@ const restaurants = [
     deliveryTime: "30 mins",
     priceForTwo: 260,
     discount: "50% OFF",
-    isPremium: false,
   },
   {
     name: "Biryani Corner",
     image: restaurantBiryani,
     rating: 4.5,
-    deliveryTime: "30 mins",
+    deliveryTime: "25 mins",
     priceForTwo: 250,
-    discount: "50% OFF",
-    isPremium: true,
+    discount: "40% OFF",
   },
   {
     name: "Pizza House",
     image: restaurantPizza,
-    rating: 4.5,
-    deliveryTime: "30 mins",
+    rating: 4.6,
+    deliveryTime: "35 mins",
     priceForTwo: 260,
-    discount: "50% OFF",
-    isPremium: true,
+    discount: "30% OFF",
   },
   {
-    name: "Cake Shop",
+    name: "Cake Studio",
     image: restaurantCake,
-    rating: 4.5,
-    deliveryTime: "30 mins",
+    rating: 4.8,
+    deliveryTime: "20 mins",
     priceForTwo: 230,
-    discount: "50% OFF",
-    isPremium: false,
+    discount: "FREE DEL",
   },
 ];
 
 const PopularSection = () => {
   return (
-    <section className="py-10 lg:py-14 bg-background">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
+    <section className="py-14 lg:py-20 bg-background">
+      <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex items-center justify-between mb-8"
+          className="flex items-end justify-between mb-10"
         >
           <div>
-            <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground">
               Popular Near You
             </h3>
-            <p className="text-muted-foreground mt-1 text-sm md:text-base">
-              Discover the best food spots in your area
+            <p className="text-muted-foreground mt-2 text-base">
+              Curated picks from top-rated restaurants
             </p>
           </div>
-          <motion.div whileHover={{ x: 5 }} whileTap={{ scale: 0.95 }}>
-            <Button variant="ghost" className="gap-2 text-primary group">
+          <motion.div whileHover={{ x: 4 }}>
+            <Button variant="ghost" className="gap-2 text-primary font-semibold">
               View All
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4" />
             </Button>
           </motion.div>
         </motion.div>
 
-        {/* Restaurant Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {restaurants.map((restaurant, index) => (
             <RestaurantCard key={index} {...restaurant} index={index} />
           ))}
         </div>
 
-        {/* Load More - Mobile */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-8 flex justify-center lg:hidden"
+          className="mt-10 flex justify-center lg:hidden"
         >
-          <Button variant="outline" size="lg" className="w-full max-w-xs gap-2">
-            Show More Restaurants
+          <Button variant="outline" size="lg" className="w-full max-w-xs gap-2 rounded-xl">
+            Show More
             <ArrowRight className="w-4 h-4" />
           </Button>
         </motion.div>
