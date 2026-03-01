@@ -8,10 +8,10 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-card/90 backdrop-blur-xl border-b border-border/50">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between gap-6">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between gap-6 bg-primary text-white">
         {/* Logo */}
         <motion.div className="flex-shrink-0" whileHover={{ scale: 1.03 }}>
-          <h1 className="text-2xl sm:text-3xl font-display font-extrabold text-primary cursor-pointer tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-display font-extrabold cursor-pointer tracking-tight text-secondary">
             foodzzy
           </h1>
         </motion.div>
@@ -19,8 +19,8 @@ const Header = () => {
         {/* Location Selector */}
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="hidden md:flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary cursor-pointer transition-colors hover:bg-secondary/80"
-        >
+          className="hidden md:flex items-center gap-2 px-4 py-2.5 rounded-xl bg-secondary cursor-pointer transition-colors hover:bg-secondary/80">
+
           <MapPin className="w-4 h-4 text-primary" />
           <span className="text-sm font-medium text-foreground">Mumbai, India</span>
           <ChevronDown className="w-4 h-4 text-muted-foreground" />
@@ -33,8 +33,8 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search for restaurants, dishes..."
-              className="w-full pl-11 pr-4 py-2.5 rounded-xl bg-secondary border-0 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
-            />
+              className="w-full pl-11 pr-4 py-2.5 rounded-xl bg-secondary border-0 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow" />
+
           </div>
         </div>
 
@@ -61,8 +61,8 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
           </motion.div>
@@ -71,22 +71,22 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="md:hidden border-t border-border overflow-hidden bg-card"
-          >
+        {isMobileMenuOpen &&
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          className="md:hidden border-t border-border overflow-hidden bg-card">
+
             <div className="container mx-auto px-6 py-5 space-y-4">
               {/* Mobile Search */}
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                 <input
-                  type="text"
-                  placeholder="Search for restaurants..."
-                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-secondary text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
-                />
+                type="text"
+                placeholder="Search for restaurants..."
+                className="w-full pl-11 pr-4 py-3 rounded-xl bg-secondary text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30" />
+
               </div>
 
               {/* Location */}
@@ -96,23 +96,23 @@ const Header = () => {
                 <ChevronDown className="w-4 h-4 text-muted-foreground ml-auto" />
               </div>
 
-              {["Home", "Offers", "Help"].map((item, i) => (
-                <motion.div
-                  key={item}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.05 * (i + 1) }}
-                  className="px-4 py-2.5 text-foreground font-medium hover:text-primary cursor-pointer transition-colors rounded-lg"
-                >
+              {["Home", "Offers", "Help"].map((item, i) =>
+            <motion.div
+              key={item}
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.05 * (i + 1) }}
+              className="px-4 py-2.5 text-foreground font-medium hover:text-primary cursor-pointer transition-colors rounded-lg">
+
                   {item}
                 </motion.div>
-              ))}
+            )}
             </div>
           </motion.div>
-        )}
+        }
       </AnimatePresence>
-    </header>
-  );
+    </header>);
+
 };
 
 export default Header;
