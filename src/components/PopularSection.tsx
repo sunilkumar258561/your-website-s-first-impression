@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import RestaurantCard from "./RestaurantCard";
 import restaurantPizza from "@/assets/restaurant-pizza.jpg";
@@ -44,7 +44,7 @@ const restaurants = [
 
 const PopularSection = () => {
   return (
-    <section className="py-14 lg:py-20 bg-background">
+    <section className="py-14 lg:py-20 bg-background relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,11 @@ const PopularSection = () => {
           className="flex items-end justify-between mb-10"
         >
           <div>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-display font-bold text-foreground">
+            <div className="flex items-center gap-2 mb-2">
+              <Flame className="w-6 h-6 text-primary" />
+              <span className="text-sm font-bold text-primary uppercase tracking-wider">Trending Now</span>
+            </div>
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-display font-extrabold text-foreground">
               Popular Near You
             </h3>
             <p className="text-muted-foreground mt-2 text-base">
@@ -61,14 +65,14 @@ const PopularSection = () => {
             </p>
           </div>
           <motion.div whileHover={{ x: 4 }}>
-            <Button variant="ghost" className="gap-2 text-primary font-semibold">
+            <Button variant="ghost" className="gap-2 text-primary font-bold">
               View All
               <ArrowRight className="w-4 h-4" />
             </Button>
           </motion.div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {restaurants.map((restaurant, index) => (
             <RestaurantCard key={index} {...restaurant} index={index} />
           ))}
@@ -78,9 +82,9 @@ const PopularSection = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-10 flex justify-center lg:hidden"
+          className="mt-12 flex justify-center lg:hidden"
         >
-          <Button variant="outline" size="lg" className="w-full max-w-xs gap-2 rounded-xl">
+          <Button variant="outline" size="lg" className="w-full max-w-xs gap-2 rounded-xl font-bold border-primary/30 text-primary hover:bg-primary/5">
             Show More
             <ArrowRight className="w-4 h-4" />
           </Button>
